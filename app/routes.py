@@ -6,7 +6,7 @@ from .models import College, Student, Event, Registration, Attendance, Feedback
 def home():
     return "✅ Campus Event Management API is running!"
 
-# -------------------- Event --------------------
+
 @app.route("/event", methods=["POST"])
 def create_event():
     data = request.get_json()
@@ -20,7 +20,7 @@ def create_event():
     db.session.commit()
     return jsonify({"message": "Event created", "event_id": event.id})
 
-# -------------------- Registration --------------------
+
 @app.route("/register", methods=["POST"])
 def register_student():
     data = request.get_json()
@@ -32,7 +32,7 @@ def register_student():
     db.session.commit()
     return jsonify({"message": "Student registered", "registration_id": registration.id})
 
-# -------------------- Attendance --------------------
+
 @app.route("/attendance", methods=["POST"])
 def mark_attendance():
     data = request.get_json()
@@ -44,7 +44,7 @@ def mark_attendance():
     db.session.commit()
     return jsonify({"message": "Attendance marked"})
 
-# -------------------- Feedback --------------------
+
 @app.route("/feedback", methods=["POST"])
 def submit_feedback():
     data = request.get_json()
@@ -56,7 +56,7 @@ def submit_feedback():
     db.session.commit()
     return jsonify({"message": "Feedback submitted"})
 
-# -------------------- Reports --------------------
+
 @app.route("/report/event-popularity")
 def event_popularity():
     events = Event.query.all()
